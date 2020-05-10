@@ -1,0 +1,1 @@
+web: gunicorn eventglit.wsgi --log-file -

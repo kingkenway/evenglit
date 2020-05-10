@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Eventglit | Your hub for Events Awareness
+{% endblock %}
+
+{% block content %}
+    <!-- 1 -->
+
+    <div class="w3-container w3-margin-top">
+        <div class="w3-xlarge w3-margin-bottom">
+            {{ event.title }}
+            <hr>
+        </div>
+        <div>
+            {% if event.image %}
+                <img class="w3-round w3-margin" src="{{ event.image.url }}" alt="" style="height:200px">
+            {% else %}
+                <img class="w3-round w3-margin" src="{{EMPTY_EVENT_IMAGE}}" alt="" style="height:200px">
+            {% endif %}
+        </div>
+        <div class="w3-margin">
+            <label for=""><b>DESCRIPTION</b></label><br>
+            {{ event.description }}
+        </div>
+
+        
+    </div>
+
+{% endblock %}
+
+{% block js %}
+<script>console.log("You are amazing ;) ");</script>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Eventglit | Your hub for Events Awareness
+{% endblock %}
+
+{% block content %}
+    <!-- 1 -->
+    <div class="w3-container">
+        <div class="w3-light-grey w3-jumbo w3-container w3-margin-top w3-padding-large">
+            Welcome to Eventglit.
+            <hr class="w3-border-grey">
+            <div class="w3-large">Discover Great Events or Create Your Own &amp; Sell Tickets!</div>
+        </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="w3-margin-top">
+        <div class="w3-xlarge w3-container w3-margin-bottom">
+            Popular in <b>Lagos</b>
+        </div>
+
+        <div class="w3-row w3-padding-small">
+            {% for event in events %}
+
+                <div class="w3-col l3">
+                    <div class="w3-margin w3-border">
+                        <a href="{{ event.get_absolute_url }}">
+                            {% if event.image %}
+                            <img src="{{ event.image.url }}" alt="{{ event.title }}" style="width:100%;height: 200px;" class="w3-image">
+                            {% else %}
+                                <img src="{{EMPTY_EVENT_IMAGE}}" alt="{{ event.title }}" style="width:100%;height: 200px;" class="w3-image" />
+                            {% endif %}
+                        </a>
+                        <div class="w3-container">
+                            <span class="w3-tag w3-padding-tiny w3-margin-top w3-round-large w3-green w3-center">
+                            {{ event.ticket_type  }}
+                            </span> 
+                             
+                            <p class="w3-text-teal"><b>{{ event.start_time|date:"d M, Y: H:i" }}</b></p>
+                            <a href="{{ event.get_absolute_url }}">
+                                <h4><b>{{ event.title|truncatewords:3 }}</b></h4>
+                            </a>
+                            <p class="w3-text-grey">{{ event.location|truncatewords:3 }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+<script>console.log("You are amazing ;) ");</script>
+{% endblock %}
