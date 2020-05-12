@@ -21,10 +21,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('', include('event.urls')),
     path('api/', include('event.api.urls', namespace='api')),
     # path('apiv1/', include('event.api.urls')),
     path('admin/', admin.site.urls),
-    path('', include('event.urls')),
+    
     path('accounts/', include('accounts.urls')),
     # path('u/', include('accounts.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
